@@ -17,11 +17,17 @@ public class LoginController {
 	private AlumnoServicio servicio;
 	
 	@RequestMapping("/verLogin")
-	public String metVerSintomas() {
+	public String metLogin() {
 		
 		return "Login";
 	}
 	
+	
+	@RequestMapping("/verLoMenu")
+	public String metMenuL() {
+		
+		return "Menu";
+	}
 	
 	
 	

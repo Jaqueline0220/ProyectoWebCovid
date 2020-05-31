@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<!-- jQuery CDN - Slim version (=without AJAX) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -255,10 +256,10 @@ form button:hover {
 	<div class="container">
 		<h1>Bienvenido</h1>
 		
-		<form class="form">
+		<form class="form" action="verLoMenu">
 			<input type="text" placeholder="Usuario">
 			<input type="password" placeholder="Contraseña">
-			<button type="submit" id="login-button">Ingresar</button>
+			<button type="submit" id="btnLogin" >Ingresar</button>
 		</form>
 	</div>
 	
@@ -277,11 +278,7 @@ form button:hover {
 </div>
 <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script > 
-$("#login-button").click(function(event){
-	event.preventDefault()
-	 $('form').fadeOut(500);
-	 $('.wrapper').addClass('form-success');
-});
+
 //# sourceURL=pen.js
 </script>
 

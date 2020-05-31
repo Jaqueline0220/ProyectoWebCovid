@@ -27,10 +27,17 @@ $(document).ready(function () {
 });
 </script>
 
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+
 <script type="text/javascript" src="js/bootstrapValidator.js"></script>
+
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <style type="text/css">
-/*
+/*/Covid-1/src/main/resources/static/js/jquery.dataTables.min.js
     DEMO STYLE
 */
 
@@ -215,7 +222,7 @@ a.article:hover {
         <div id="content">
 			<jsp:include page="Nav.jsp" />
 	<div class="container">
-		<form action="">
+		<!-- <form action="">
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label>Documento de identidad</label>
@@ -240,31 +247,77 @@ a.article:hover {
 				</div>
 			</div>
 			<br>
-		</form>
+		</form>-->
 		<br>
-		<table class="table">
-			<thead>
-				<tr>
-					<th style="width: 20%">Documento Identidad</th>
-					<th style="width: 20%">Estado</th>
-					<th style="width: 20%">Celular</th>
-					<th style="width: 20%">Nacionalidad</th>
-				</tr>
-			</thead>
-			<tbody>
-				
-				
-			</tbody>
-		</table>
-	</div>
+				<div id="divDocente">
+					<table id="id_table_docente">
+						<thead>
+							<tr>
+								<th style="width: 30%">Documento Identidad</th>
+								<th style="width: 20%">Estado</th>
+								<th style="width: 30%">Celular</th>
+								<th style="width: 20%">Nacionalidad</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
        </div>
     </div>
 <script type="text/javascript">
+console.log("inicio");
+/*$.getJSON("cargaPersona", {}, function(data){
+	console.log("inicio2");
+	$.each(data, function(index,item){
+		$("#id_categoria").append("<option value="+item.cod_categoria +">"+ item.nom_categoria +"</option>");
+	});
+});*/
+
+//$("#id_table_docente").DataTable().destroy();
+$("#id_table_docente tbody").empty(); 
+
+var tablaDocente="",filaTabla="";
+$.getJSON("cargaPersona",{},
+		  function(data){
+	$.each(data,function(index,item){
+		var editar="<button type='button' class='btn btn-success'>Editar</button>";
+		var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
+	   filaTabla+="<tr><td>"+item.numDoc+"</td>"+		 
+			  						  "<td>"+item.estado.descripcion+"</td>"+
+			  						  "<td>"+item.numcel+"</td>"+
+			  						  "<td>"+item.nacionalidad.nombreNacionalidad+"</td>"+
+									  "<td>"+editar+"</td>"+
+	  								  "<td>"+eliminar+"</td></tr>";			
+			})
+		$("#id_table_docente tbody").append(filaTabla);
+		//$("#id_table_docente").DataTable().draw();
+		$("#id_table_docente").DataTable({
+			"language": {
+		        "lengthMenu": "_MENU_ registros por pagina",
+		        "zeroRecords": "No existen registros",
+		        "info": "Pagina _PAGE_ de _PAGES_",
+		        "infoEmpty": "Sin registros",
+		        "infoFiltered": "(Filtro de _MAX_ registros)",
+		        "search": "Buscar:",
+			    "paginate": {
+			        "first":      "First",
+			        "last":       "Last",
+			        "next":       "Siguiente",
+			        "previous":   "Anterior"
+			    }
+		    },
+		    "pagingType": "simple"
+		    
+		});
+});
+
 
 </script>
 
 </body>
-
-
-
 </html>
