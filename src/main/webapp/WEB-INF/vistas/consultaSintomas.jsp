@@ -279,16 +279,16 @@ $.getJSON("cargaPersona",{},
 	$.each(data,function(index,item){
 		var editar="<button type='button' class='btn btn-success'>Editar</button>";
 		var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
-	   
 				   $.each(item.triajeP,function(index2,item2){
+					   if(item2.pregunta != undefined){
 					   filaTabla+="<tr><td>"+item.numDoc+"</td>"+	 
 							  						  "<td>"+item2.pregunta.descripcion+"</td>"+
 							  						  "<td>"+item2.respuesta+"</td>"+	
 							  						"<td>"+editar+"</td>"+
 					  								  "<td>"+eliminar+"</td></tr>";
-							})		 
-									  			
-			})
+					   }
+				})			
+		})
 		$("#id_table_docente tbody").append(filaTabla);
 		//$("#id_table_docente").DataTable().draw();
 		$("#id_table_docente").DataTable({
