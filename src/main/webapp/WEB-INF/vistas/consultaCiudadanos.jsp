@@ -285,7 +285,7 @@ var tablaDocente="",filaTabla="";
 $.getJSON("cargaPersona",{},
 		  function(data){
 	$.each(data,function(index,item){
-		if(item.estado != undefined){
+		//if(item.estado != undefined){
 			var editar="<button type='button' class='btn btn-success'>Editar</button>";
 			var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
 		   filaTabla+="<tr><td>"+item.numDoc+"</td>"+		 
@@ -294,7 +294,7 @@ $.getJSON("cargaPersona",{},
 				  						  "<td>"+item.nacionalidad.nombreNacionalidad+"</td>"+
 										  "<td>"+editar+"</td>"+
 		  								  "<td>"+eliminar+"</td></tr>";			
-				}
+				//}
 			})
 		$("#id_table_docente tbody").append(filaTabla);
 		//$("#id_table_docente").DataTable().draw();
