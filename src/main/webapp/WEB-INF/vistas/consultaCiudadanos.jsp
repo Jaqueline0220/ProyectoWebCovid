@@ -28,10 +28,10 @@ $(document).ready(function () {
 </script>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
-
-<link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+ 
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 
 <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 
