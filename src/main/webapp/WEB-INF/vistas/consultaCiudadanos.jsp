@@ -19,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
 <script type="text/javascript">
 $(document).ready(function () {
     $('#sidebarCollapse').on('click', function () {
@@ -26,6 +27,8 @@ $(document).ready(function () {
     });
 });
 </script>
+
+
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
@@ -210,11 +213,12 @@ a.article:hover {
     	width: 50%;
     }
 }
+.help-block {
+    color: red;
+}
 </style>
 </head>
 <body>
-<body>
-	
 <div class="wrapper">
        <jsp:include page="Sidebar.jsp" />
 
@@ -222,42 +226,22 @@ a.article:hover {
         <div id="content">
 			<jsp:include page="Nav.jsp" />
 	<div class="container">
-		<!-- <form action="">
-			<div class="form-row">
-				<div class="form-group col-md-4">
-					<label>Documento de identidad</label>
-			 		<input class="form-control" type="number" name="filtro" placeholder="Ingrese su dni" maxlength="7">
-				</div> 
-				<div class="form-group col-md-4">
-					<label class="control-label" for="id_estado">
-						Estado 
-					</label> 
-					<select class="form-control" id="id_estado" name="" >
-						<option value=" ">[Seleccione]</option>
-						<option value=" ">Sospechoso</option>
-						<option value=" ">No sospechoso</option>
-						
-					</select>
-				</div>
-				<div class="form-group col-md-4">
-					<label class="control-label" for="id_estado">
-						
-					</label> <br><br>
-					<button type="submit" class="btn btn-primary">Filtrar</button>
-				</div>
+		<c:if test="${sessionScope.MENSAJE != null}">
+			<div class="alert alert-success fade in" id="success-alert">
+			 <a href="#" class="close" data-dismiss="alert">&times;</a>
+			 <strong>${sessionScope.MENSAJE}</strong>
 			</div>
-			<br>
-		</form>-->
+		</c:if>
+		<c:remove var="MENSAJE" />
 		<br>
 				<div id="divDocente">
 					<table id="id_table_docente">
 						<thead>
 							<tr>
-								<th style="width: 30%">Documento Identidad</th>
+								<th style="width: 20%">Documento Identidad</th>
 								<th style="width: 20%">Estado</th>
 								<th style="width: 30%">Celular</th>
 								<th style="width: 20%">Nacionalidad</th>
-								<th></th>
 								<th></th>
 							</tr>
 						</thead>
@@ -266,60 +250,239 @@ a.article:hover {
 						</tbody>
 					</table>
 				</div>
+			
+				  <div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
+        <div class="modal-dialog" style="width: 60%" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-body">
+                    <form id="id_form_actualiza" action="savePersona" class="form-horizontal">
+                            <!-- Step 1 -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="panel-title">Datos<button type="button" class="close" data-dismiss="modal">&times;</button></h4>
+                                </div>
+                                    <div class="card-body">
+                                         <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_numdoc">Número Documento</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_numdoc" name="numDoc" placeholder="Ingrese el Nombre" type="number" maxlength="8"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_cel">Celular</label>
+                                            <div class="col-lg-12">
+                                                <input class="form-control" id="id_act_cel" name="numcel" placeholder="Ingrese el Nombre" type="number"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_tipodoc">Tipo Documento</label>
+                                            <div class="col-lg-12">
+                                                <select id="id_act_tipodoc" name="tipoDocumento.idTipoDocumento"
+                                                    class='form-control'>
+                                                    <option value=" ">[Seleccione]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_pais">Pais de Origen</label>
+                                            <div class="col-lg-12">
+                                                <select id="id_act_pais" name="nacionalidad.idNacionalidad"
+                                                    class='form-control'>
+                                                    <option value=" ">[Seleccione]</option>
+                                                </select>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group">
+                                            <label class="col-lg-5 control-label" for="id_act_estado">Estado</label>
+                                            <div class="col-lg-12">
+                                                <select id="id_act_estado" name="estado.idEstado"
+                                                    class='form-control'>
+                                                    <option value=" ">[Seleccione]</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="id_act_idrol" name="rol.idRol">
+                                        <input id="id_ID" name="idPersona" type="hidden"/>
+                                        <div class="form-group">
+                                            <div class="col-lg-12" style="text-align: center;">
+                                                <button type="submit" class="btn btn-primary">ACTUALIZA</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                    </form>   
+            
+            </div>
+        </div>
+    </div>
+        
+    </div>
 			</div>
        </div>
     </div>
 <script type="text/javascript">
-console.log("inicio");
-/*$.getJSON("cargaPersona", {}, function(data){
-	console.log("inicio2");
-	$.each(data, function(index,item){
-		$("#id_categoria").append("<option value="+item.cod_categoria +">"+ item.nom_categoria +"</option>");
-	});
-});*/
 
-//$("#id_table_docente").DataTable().destroy();
-$("#id_table_docente tbody").empty(); 
-
-var tablaDocente="",filaTabla="";
-$.getJSON("cargaPersona",{},
-		  function(data){
-	$.each(data,function(index,item){
-		//if(item.estado != undefined){
-			var editar="<button type='button' class='btn btn-success'>Editar</button>";
-			var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
-		   filaTabla+="<tr><td>"+item.numDoc+"</td>"+		 
-				  						  "<td>"+item.estado.descripcion+"</td>"+
-				  						  "<td>"+item.numcel+"</td>"+
-				  						  "<td>"+item.nacionalidad.nombreNacionalidad+"</td>"+
-										  "<td>"+editar+"</td>"+
-		  								  "<td>"+eliminar+"</td></tr>";			
-				//}
-			})
-		$("#id_table_docente tbody").append(filaTabla);
-		//$("#id_table_docente").DataTable().draw();
-		$("#id_table_docente").DataTable({
-			"language": {
-		        "lengthMenu": "_MENU_ registros por pagina",
-		        "zeroRecords": "No existen registros",
-		        "info": "Pagina _PAGE_ de _PAGES_",
-		        "infoEmpty": "Sin registros",
-		        "infoFiltered": "(Filtro de _MAX_ registros)",
-		        "search": "Buscar:",
-			    "paginate": {
-			        "first":      "First",
-			        "last":       "Last",
-			        "next":       "Siguiente",
-			        "previous":   "Anterior"
-			    }
-		    },
-		    "pagingType": "simple"
-		    
+$(function() {
+	ListarPersona();
+	ListarTipo();
+	ListarNacionalidad();
+	ListarEstado();
+});
+function ListarTipo(){
+	$.getJSON("cargaTipoDocumento", {}, function(data){
+		console.log("inicio2");
+		$.each(data, function(index,item){
+			$("#id_act_tipodoc").append("<option value="+item.idTipoDocumento +">"+ item.descripcion +"</option>");
 		});
+	});
+}
+
+function ListarNacionalidad(){
+	$.getJSON("cargaNacionalidad", {}, function(data){
+		console.log("inicio2");
+		$.each(data, function(index,item){
+			$("#id_act_pais").append("<option value="+item.idNacionalidad +">"+ item.nombreNacionalidad +"</option>");
+		});
+	});
+}
+
+function ListarEstado(){
+	$.getJSON("cargaEstado", {}, function(data){
+		console.log("inicio2");
+		$.each(data, function(index,item){
+			$("#id_act_estado").append("<option value="+item.idEstado +">"+ item.descripcion +"</option>");
+		});
+	});
+}
+
+
+function editar(idpersona,nundoc,numcel,idrol,idtipodoc,idnacio, idestado){
+	$('input[id=id_ID]').val(idpersona);
+	$('input[id=id_act_numdoc]').val(nundoc);
+	$('input[id=id_act_cel]').val(numcel);
+	$('select[id=id_act_tipodoc]').val(idtipodoc);
+	$('select[id=id_act_pais]').val(idnacio);
+	$('select[id=id_act_estado]').val(idestado);
+	$('input[id=id_act_idrol]').val(idrol);
+}
+function ListarPersona(){
+	//$("#id_table_docente").DataTable().destroy();
+	$("#id_table_docente tbody").empty(); 
+
+	var tablaDocente="",filaTabla="";
+	$.getJSON("cargaPersona",{},
+			  function(data){
+		$.each(data,function(index,item){
+			//if(item.estado != undefined){
+			//<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+				var editar='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#idModalActualiza"  onclick="editar('
+				+item.idPersona+','+"'"+item.numDoc+"'"+','+"'"+item.numcel+"'"+','+"'"+item.rol.idRol+"'"+
+				','+"'"+item.tipoDocumento.idTipoDocumento+"'"+','+"'"+item.nacionalidad.idNacionalidad+"'"+','+"'"+item.estado.idEstado+"'"+
+				')">Editar</button>';
+				
+				//var eliminar='<button type="button" class="btn btn-btn-danger">Eliminar</button>';
+			   filaTabla+="<tr><td>"+item.numDoc+"</td>"+
+					  						  "<td>"+item.estado.descripcion+"</td>"+
+					  						  "<td>"+item.numcel+"</td>"+
+					  						  "<td>"+item.nacionalidad.nombreNacionalidad+"</td>"+
+											 // "<td>"+editar+"</td>"+
+			  								  "<td>"+editar+"</td></tr>";			
+					//}
+				})
+			$("#id_table_docente tbody").append(filaTabla);
+			//$("#id_table_docente").DataTable().draw();
+			$("#id_table_docente").DataTable({
+				"language": {
+			        "lengthMenu": "_MENU_ registros por pagina",
+			        "zeroRecords": "No existen registros",
+			        "info": "Pagina _PAGE_ de _PAGES_",
+			        "infoEmpty": "Sin registros",
+			        "infoFiltered": "(Filtro de _MAX_ registros)",
+			        "search": "Buscar:",
+				    "paginate": {
+				        "first":      "First",
+				        "last":       "Last",
+				        "next":       "Siguiente",
+				        "previous":   "Anterior"
+				    }
+			    },
+			    "pagingType": "simple"
+			    
+			});
+	});
+}
+
+$(document).ready(function() {
+    $('#id_form_actualiza').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	numDoc:{
+                    selector: "#id_act_numdoc",
+                    validators:{
+                        notEmpty: {
+                             message: 'El numero de documento es obligatorio'
+                        },
+                    }
+                },
+                numcel:{
+                    selector: "#id_act_cel",
+                    validators:{
+                        notEmpty: {
+                             message: 'El numero de celular es obligatorio'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]{9}$/,
+                            message: 'El numero de celular es de 9 dígitos'
+                        }
+                    }
+                },
+                tipoDocumento:{
+                    selector: "#id_act_tipodoc",
+                    validators:{
+                        notEmpty: {
+                             message: 'El tipo documento es obligatorio'
+                        }
+                    }
+                },
+
+                nacionalidad:{
+                    selector: "#id_act_pais",
+                    validators:{
+                        notEmpty: {
+                             message: 'La nacionalidad es obligatorio'
+                        }
+                    }
+                },
+
+                estado:{
+                    selector: "#id_act_estado",
+                    validators:{
+                        notEmpty: {
+                             message: 'El estado es obligatorio'
+                        }
+                    }
+                },
+        }   
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#id_form_actualiza').bootstrapValidator('validate');
+    });
 });
 
 
 </script>
-
+<script type="text/javascript">
+$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+});
+</script>
 </body>
 </html>

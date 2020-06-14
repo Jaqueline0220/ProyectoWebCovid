@@ -50,7 +50,7 @@ public class SintomasController {
 	public String metVerSintomas() {
 		URL urlForGetRequest = null;
 		try {
-			urlForGetRequest = new URL("http://env-4252036.j.layershift.co.uk/rest/servicios/triajes");
+			urlForGetRequest = new URL("http://env-6360882.j.layershift.co.uk/rest/servicios/triajes");
 			String readLine = null;
 		    HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
 		    conection.setRequestMethod("GET");
