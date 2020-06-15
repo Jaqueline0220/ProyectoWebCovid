@@ -231,49 +231,222 @@ a.article:hover {
 						</div>
 					</c:if>
 					<c:remove var="MENSAJE" />
-					<form action="registroCifras" id="id_form"> 
-				
-							<div class="form-group">
-								<label class="control-label" for="id_nombre">Nuevos Casos</label>
-								<input class="form-control" type="text" id="id_nombre" name="nombre" placeholder="Ingrese el nombre" maxlength="40">    
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label" for="id_dni">Casos Totales</label>
-								<input class="form-control" type="text" id="id_dni" name="dni" placeholder="Ingrese el dni" maxlength="8">    
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label" for="id_correo">Fallecidos</label>
-								<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo" maxlength="100">    
-							</div>
-							<div class="form-group">
-								<label class="control-label" for="id_correo">Recuperados</label>
-								<input class="form-control" type="text" id="id_correo" name="correo" placeholder="Ingrese el correo" maxlength="100">    
-							</div>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary" >Guardar</button>
-							</div>
-					</form>
+					<br>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#idModalSave" >Registrar</button>
+					<br>
+				<div id="divDocente">
+				<br>
+					<table id="id_table_cifras">
+						<thead>
+							<tr>
+								<th style="width: 20%">Fecha</th>
+								<th style="width: 20%">Nuevos Infectados</th>
+								<th style="width: 30%">Infectados Totales</th>
+								<th style="width: 20%">Infectados Fallecidos</th>
+								<th style="width: 30%">Infectados Recuperados</th>
+								<th style="width: 20%">Departamento</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
 				</div>
-
-          </div>
+				<div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalSave">
+			        <div class="modal-dialog" style="width: 60%" role="document">
+			            <!-- Modal content-->
+			            <div class="modal-content">
+			            <div class="modal-body">
+			                    <form id="id_form_save" action="saveCifras" class="form-horizontal">
+			                            <!-- Step 1 -->
+												<div class="card">
+													<div class="card-header">
+														<h4 class="panel-title">
+															Datos
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+														</h4>
+													</div>
+													<div class="card-body">
+														<div class="form-group">
+															<label class="control-label" for="id_nuevos">Nuevos Casos</label>
+															<input class="form-control" type="number" id="id_nuevos" name="nuevos">
+														</div>
+			
+														<div class="form-group">
+															<label class="control-label" for="id_totales">Casos Totales</label>
+															<input class="form-control" type="number" id="id_totales" name="totales">
+														</div>
+			
+														<div class="form-group">
+															<label class="control-label" for="id_fallecidos">Fallecidos</label>
+															<input class="form-control" type="number" id="id_fallecidos" name="fallecidos">
+														</div>
+														<div class="form-group">
+															<label class="control-label" for="id_recuperados">Recuperados</label>
+															<input class="form-control" type="number" id="id_recuperados" name="recuperados">
+														</div>
+														<div class="form-group">
+															<label class="control-label" for="id_fecha">Fecha</label>
+															<input class="form-control" type="date" id="id_fecha" name="fecha">
+														</div>
+														<div class="form-group">
+				                                            <label class="control-label" for="id_departamento">Departamento</label>
+				                                           
+				                                                <select id="id_departamento" name="iddepartamento"
+				                                                    class='form-control'>
+				                                                    <option value=" ">[Seleccione]</option>
+				                                                </select>
+				                                        </div>
+														<div class="form-group">
+															<div class="col-lg-12" style="text-align: center;">
+																<button type="submit" class="btn btn-primary">Guardar</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>   
+			            
+			            </div>
+			        </div>
+			    </div>
+        
     </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
+			        <div class="modal-dialog" style="width: 60%" role="document">
+			            <!-- Modal content-->
+			            <div class="modal-content">
+			            <div class="modal-body">
+			                    <form id="id_form_actualiza" action="updateCifras" class="form-horizontal">
+			                            <!-- Step 1 -->
+												<div class="card">
+													<div class="card-header">
+														<h4 class="panel-title">
+															Datos
+															<button type="button" class="close" data-dismiss="modal">&times;</button>
+														</h4>
+													</div>
+													<div class="card-body">
+														<div class="form-group">
+															<label class="control-label" for="id_act_nuevos">Nuevos Casos</label>
+															<input class="form-control" type="number" id="id_act_nuevos" name="nuevos">
+														</div>
+			
+														<div class="form-group">
+															<label class="control-label" for="id_act_totales">Casos Totales</label>
+															<input class="form-control" type="number" id="id_act_totales" name="totales">
+														</div>
+			
+														<div class="form-group">
+															<label class="control-label" for="id_act_fallecidos">Fallecidos</label>
+															<input class="form-control" type="number" id="id_act_fallecidos" name="fallecidos">
+														</div>
+														<div class="form-group">
+															<label class="control-label" for="id_act_recuperados">Recuperados</label>
+															<input class="form-control" type="number" id="id_act_recuperados" name="recuperados">
+														</div>
+														<div class="form-group">
+															<label class="control-label" for="id_act_fecha">Fecha</label>
+															<input class="form-control" type="date" id="id_act_fecha" name="fecha">
+														</div>
+														 <div class="form-group">
+				                                            <label class="control-label" for="id_act_departamento">Departamento</label>
+				                                            
+				                                                <select id="id_act_departamento" name="iddepartamento"
+				                                                    class='form-control'>
+				                                                    <option value=" ">[Seleccione]</option>
+				                                                </select>
+				      
+				                                        </div>
+				                                          <input id="id_ID" name="idCifras" type="hidden"/>
+														<div class="form-group">
+															<div class="col-lg-12" style="text-align: center;">
+																<button type="submit" class="btn btn-primary">Guardar</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</form>   
+			            
+			            </div>
+			        </div>
+			    </div>
+        
+    </div>
+	</div>
 
-
+     </div>
+  </div>
 <script type="text/javascript">
-$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
-    $("#success-alert").slideUp(500);
+
+$(function() {
+	ListarCifras();
+	ListarDepartamento();
 });
-</script>
 
-<!-- 
-	https://mkyong.com/tutorials/java-regular-expression-tutorials/
+function ListarDepartamento(){
+	$.getJSON("cargaDepartamento", {}, function(data){
+		$.each(data, function(index,item){
+			$("#id_act_departamento").append("<option value="+item.idDepartamento +">"+ item.descripcion +"</option>");
+			$("#id_departamento").append("<option value="+item.idDepartamento +">"+ item.descripcion +"</option>");
+		});
+	});
+}
 
- -->
-<script type="text/javascript">
+function editar(idCifras,fecha,nuevos,totales,fallecidos,recuperados, idDepartamento){
+	$('input[id=id_ID]').val(idCifras);
+	$('input[id=id_act_nuevos]').val(nuevos);
+	$('input[id=id_act_totales]').val(totales);
+	$('input[id=id_act_fallecidos]').val(fallecidos);
+	$('input[id=id_act_recuperados]').val(recuperados);
+	$('input[id=id_act_fecha]').val(fecha);
+	$('select[id=id_act_departamento]').val(idDepartamento);
+}
+function ListarCifras(){
+	//$("#id_table_docente").DataTable().destroy();
+	$("#id_table_cifras tbody").empty(); 
+
+	var tablaDocente="",filaTabla="";
+	$.getJSON("cargaCifras",{},
+			  function(data){
+		$.each(data,function(index,item){
+				var editar='<button type="button" class="btn btn-info" data-toggle="modal" data-target="#idModalActualiza"  onclick="editar('
+				+item.idCifras+','+"'"+item.fecha+"'"+','+"'"+item.nuevos+"'"+','+"'"+item.totales+"'"+
+				','+"'"+item.fallecidos+"'"+','+"'"+item.recuperados+"'"+','+"'"+item.departamento.idDepartamento+"'"+
+				')">Editar</button>';
+			   filaTabla+="<tr><td>"+item.fecha+"</td>"+
+					  						  "<td>"+item.nuevos+"</td>"+
+					  						  "<td>"+item.totales+"</td>"+
+					  						  "<td>"+item.fallecidos+"</td>"+
+					  						  "<td>"+item.recuperados+"</td>"+
+					  						  "<td>"+item.departamento.descripcion+"</td>"+
+			  								  "<td>"+editar+"</td></tr>";		
+				})
+			$("#id_table_cifras tbody").append(filaTabla);
+			$("#id_table_cifras").DataTable({
+				"language": {
+			        "lengthMenu": "_MENU_ registros por pagina",
+			        "zeroRecords": "No existen registros",
+			        "info": "Pagina _PAGE_ de _PAGES_",
+			        "infoEmpty": "Sin registros",
+			        "infoFiltered": "(Filtro de _MAX_ registros)",
+			        "search": "Buscar:",
+				    "paginate": {
+				        "first":      "First",
+				        "last":       "Last",
+				        "next":       "Siguiente",
+				        "previous":   "Anterior"
+				    }
+			    },
+			    "pagingType": "simple"
+			    
+			});
+	});
+}
+
 $(document).ready(function() {
-    $('#id_form').bootstrapValidator({
+    $('#id_form_actualiza').bootstrapValidator({
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -281,39 +454,52 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        		nombre:{
-                    selector: "#id_nombre",
+        	nuevos:{
+                    selector: "#id_act_nuevos",
                     validators:{
                         notEmpty: {
-                             message: 'El nombre es obligatorio'
-                        },
-                        stringLength: {
-                            min: 3,
-                            max: 40,
-                            message: 'El nombre es de 3 a 40 caracteres'
-                        },
-                    }
-                },
-                dni:{
-                    selector: "#id_dni",
-                    validators:{
-                        notEmpty: {
-                             message: 'El dni es obligatorio'
-                        },
-                        regexp: {
-                            regexp: /^[0-9]{8}$/,
-                            message: 'el dni es 8 dígitos'
+                             message: 'Ingrese el número de casos nuevos'
                         }
                     }
                 },
-                correo:{
-                    selector: "#id_correo",
+                totales:{
+                    selector: "#id_act_totales",
                     validators:{
                         notEmpty: {
-                             message: 'El correo es obligatorio'
-                        },
-                        emailAddress: {
-                            message: 'El correo no es valido'
+                             message: 'Ingrese el total de contagiados'
+                        }
+                    }
+                },
+			fallecidos:{
+                    selector: "#id_act_fallecidos",
+                    validators:{
+                        notEmpty: {
+                             message: 'Ingrese el número de fallecidos'
+                        }
+                    }
+                },
+
+                recuperados:{
+                    selector: "#id_act_recuperados",
+                    validators:{
+                        notEmpty: {
+                             message: 'Ingrese el número de recuperados'
+                        }
+                    }
+                },
+                departamento:{
+                    selector: "#id_act_departamento",
+                    validators:{
+                        notEmpty: {
+                             message: 'Seleccione un departamento'
+                        }
+                    }
+                },
+                fecha:{
+                    selector: "#id_act_fecha",
+                    validators:{
+                        notEmpty: {
+                             message: 'Seleccione una fecha'
                         }
                     }
                 },
@@ -322,8 +508,80 @@ $(document).ready(function() {
 
     // Validate the form manually
     $('#validateBtn').click(function() {
-        $('#id_form').bootstrapValidator('validate');
+        $('#id_form_actualiza').bootstrapValidator('validate');
     });
+});
+
+$(document).ready(function() {
+    $('#id_form_save').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+        	nuevos:{
+                selector: "#id_nuevos",
+                validators:{
+                    notEmpty: {
+                         message: 'Ingrese el número de casos nuevos'
+                    }
+                }
+            },
+            totales:{
+                selector: "#id_totales",
+                validators:{
+                    notEmpty: {
+                         message: 'Ingrese el total de contagiados'
+                    }
+                }
+            },
+		fallecidos:{
+                selector: "#id_fallecidos",
+                validators:{
+                    notEmpty: {
+                         message: 'Ingrese el número de fallecidos'
+                    }
+                }
+            },
+
+            recuperados:{
+                selector: "#id_recuperados",
+                validators:{
+                    notEmpty: {
+                         message: 'Ingrese el número de recuperados'
+                    }
+                }
+            },
+            departamento:{
+                selector: "#id_departamento",
+                validators:{
+                    notEmpty: {
+                         message: 'Seleccione un departamento'
+                    }
+                }
+            },
+            fecha:{
+                selector: "#id_act_fecha",
+                validators:{
+                    notEmpty: {
+                         message: 'Seleccione una fecha'
+                    }
+                }
+            },
+        }   
+    });
+
+    // Validate the form manually
+    $('#validateBtn').click(function() {
+        $('#id_form_save').bootstrapValidator('validate');
+    });
+});
+</script>
+<script type="text/javascript">
+$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
 });
 </script>
 

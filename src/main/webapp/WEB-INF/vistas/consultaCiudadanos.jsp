@@ -251,7 +251,7 @@ a.article:hover {
 					</table>
 				</div>
 			
-				  <div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
+	<div class="modal fade" tabindex="-1" role="dialog"  aria-hidden="true" id="idModalActualiza">
         <div class="modal-dialog" style="width: 60%" role="document">
             <!-- Modal content-->
             <div class="modal-content">
@@ -318,9 +318,9 @@ a.article:hover {
     </div>
         
     </div>
-			</div>
-       </div>
     </div>
+ </div>
+ </div>
 <script type="text/javascript">
 
 $(function() {

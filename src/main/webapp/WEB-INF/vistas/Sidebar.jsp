@@ -23,7 +23,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="/verCifras"><i class="fas fa-chart-bar"></i>Cifras</a>
                 </li>
                 <li>
                     <a href="#">Contact</a>

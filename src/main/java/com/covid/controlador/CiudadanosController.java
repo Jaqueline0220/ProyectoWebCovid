@@ -8,33 +8,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.swing.text.html.parser.Entity;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.annotation.RequestBody;
-/*import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.ParentPackage;
-import org.apache.struts2.convention.annotation.Result;*/
 
-import com.covid.entidad.Alumno;
 import com.covid.entidad.Estado;
 import com.covid.entidad.Nacionalidad;
 import com.covid.entidad.Persona;
 import com.covid.entidad.TipoDocumento;
-import com.covid.servicio.EstadoServicio;
-import com.covid.servicio.NacionalidadServicio;
-import com.covid.servicio.PersonaServicio;
-import com.covid.servicio.RolServicio;
-import com.covid.servicio.TipoDocumentoServicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -42,17 +26,6 @@ import java.lang.reflect.Type;
 @Controller
 @SessionAttributes("MENSAJE")
 public class CiudadanosController {
-
-	@Autowired
-	private PersonaServicio servicio;
-	@Autowired
-	private EstadoServicio servicioE;
-	@Autowired
-	private NacionalidadServicio servicioN;
-	@Autowired
-	private RolServicio servicioR;
-	@Autowired
-	private TipoDocumentoServicio servicioT;
 	
 	private List<Persona> lstPersona;
 	
