@@ -3,36 +3,27 @@ package com.covid.controlador;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.covid.entidad.Persona;
 import com.covid.entidad.Triaje;
-import com.covid.servicio.TriajeServicio;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 @Controller
 @SessionAttributes("MENSAJE")
 public class SintomasController {
 
-	@Autowired
-	private TriajeServicio servicio;
 	private List<Triaje> lstTriaje;
 	
 	

@@ -76,7 +76,7 @@ body :-ms-input-placeholder {
 .container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 80px 0;
+  padding: 40px 0;
   height: 400px;
   text-align: center;
 }
@@ -89,7 +89,6 @@ body :-ms-input-placeholder {
   font-weight: 200;
 }
 form {
-  padding: 20px 0;
   position: relative;
   z-index: 2;
 }
@@ -254,11 +253,18 @@ form button:hover {
 <body>
 <div class="wrapper">
 	<div class="container">
+	<c:if test="${sessionScope.MENSAJE != null}">
+						<div class="alert alert-success fade in" id="success-alert">
+						 <a href="#" class="close" data-dismiss="alert">&times;</a>
+						 <strong>${sessionScope.MENSAJE}</strong>
+						</div>
+					</c:if>
+					<c:remove var="MENSAJE" />
+					<br>
+		<form class="form" action="verValidarUsuario">
 		<h1>Bienvenido</h1>
-		
-		<form class="form" action="verLoMenu">
-			<input type="text" placeholder="Usuario">
-			<input type="password" placeholder="Contraseña">
+			<input type="text" placeholder="Usuario" name="user" required>
+			<input type="password" placeholder="Contraseña" name="contrasenia" required>
 			<button type="submit" id="btnLogin" >Ingresar</button>
 		</form>
 	</div>
@@ -281,6 +287,10 @@ form button:hover {
 
 //# sourceURL=pen.js
 </script>
-
+<script type="text/javascript">
+$("#success-alert").fadeTo(1000, 500).slideUp(500, function(){
+    $("#success-alert").slideUp(500);
+});
+</script>
 </body>
 </html>

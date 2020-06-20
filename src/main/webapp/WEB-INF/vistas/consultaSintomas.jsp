@@ -255,8 +255,7 @@ a.article:hover {
 								<th style="width: 20%">Documento Identidad</th>
 								<th style="width: 40%">Pregunta</th>
 								<th style="width: 20%">Respuesta</th>
-								<th></th>
-								<th></th>
+								
 							</tr>
 						</thead>
 						<tbody>
@@ -305,9 +304,7 @@ $.getJSON("cargaTriage",{},
 					   //if(item2.pregunta != undefined){
 					   filaTabla+="<tr><td>"+item.persona.numDoc+"</td>"+	 
 							  						  "<td>"+item.pregunta.descripcion+"</td>"+
-							  						  "<td>"+item.respuesta+"</td>"+	
-							  						"<td>"+editar+"</td>"+
-					  								  "<td>"+eliminar+"</td></tr>";
+					  								  "<td>"+item.respuesta+"</td></tr>";
 					   //}
 				//})			
 		})

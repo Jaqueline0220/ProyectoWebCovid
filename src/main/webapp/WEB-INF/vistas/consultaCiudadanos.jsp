@@ -266,13 +266,13 @@ a.article:hover {
                                          <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_numdoc">Número Documento</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_numdoc" name="numDoc" placeholder="Ingrese el Nombre" type="number" maxlength="8"/>
+                                                <input class="form-control" id="id_act_numdoc" name="numDoc" placeholder="Ingrese el número de documento" maxlength="8"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-lg-5 control-label" for="id_act_cel">Celular</label>
                                             <div class="col-lg-12">
-                                                <input class="form-control" id="id_act_cel" name="numcel" placeholder="Ingrese el Nombre" type="number"/>
+                                                <input class="form-control" id="id_act_cel" name="numcel" placeholder="Ingrese el celular" maxlength="9"/>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -306,7 +306,7 @@ a.article:hover {
                                         <input id="id_ID" name="idPersona" type="hidden"/>
                                         <div class="form-group">
                                             <div class="col-lg-12" style="text-align: center;">
-                                                <button type="submit" class="btn btn-primary">ACTUALIZA</button>
+                                                <button type="submit" class="btn btn-success">ACTUALIZA</button>
                                             </div>
                                         </div>
                                     </div>
@@ -426,8 +426,12 @@ $(document).ready(function() {
                     selector: "#id_act_numdoc",
                     validators:{
                         notEmpty: {
-                             message: 'El numero de documento es obligatorio'
+                             message: 'El número de documento es obligatorio'
                         },
+                        regexp: {
+                            regexp: /^[0-9]{8}$/,
+                            message: 'El numero de documento es de 8 dígitos'
+                        }
                     }
                 },
                 numcel:{

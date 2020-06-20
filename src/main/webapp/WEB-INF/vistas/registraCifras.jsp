@@ -232,7 +232,7 @@ a.article:hover {
 					</c:if>
 					<c:remove var="MENSAJE" />
 					<br>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#idModalSave" >Registrar</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#idModalSave" >Registrar</button>
 					<br>
 				<div id="divDocente">
 				<br>
@@ -270,25 +270,25 @@ a.article:hover {
 													<div class="card-body">
 														<div class="form-group">
 															<label class="control-label" for="id_nuevos">Nuevos Casos</label>
-															<input class="form-control" type="number" id="id_nuevos" name="nuevos">
+															<input class="form-control" id="id_nuevos" type="number" name="nuevos" placeholder="Ingrese el número de casos nuevos">
 														</div>
 			
 														<div class="form-group">
 															<label class="control-label" for="id_totales">Casos Totales</label>
-															<input class="form-control" type="number" id="id_totales" name="totales">
+															<input class="form-control" id="id_totales" type="number" name="totales" placeholder="Ingrese el número de casos totales">
 														</div>
 			
 														<div class="form-group">
 															<label class="control-label" for="id_fallecidos">Fallecidos</label>
-															<input class="form-control" type="number" id="id_fallecidos" name="fallecidos">
+															<input class="form-control" id="id_fallecidos" type="number" name="fallecidos" placeholder="Ingrese el número de fallecidos">
 														</div>
 														<div class="form-group">
 															<label class="control-label" for="id_recuperados">Recuperados</label>
-															<input class="form-control" type="number" id="id_recuperados" name="recuperados">
+															<input class="form-control" id="id_recuperados" type="number" name="recuperados" placeholder="Ingrese el número de recuperados">
 														</div>
 														<div class="form-group">
 															<label class="control-label" for="id_fecha">Fecha</label>
-															<input class="form-control" type="date" id="id_fecha" name="fecha">
+															<input class="form-control" type="date" id="id_fecha" name="fecha" placeholder="Ingrese la fecha">
 														</div>
 														<div class="form-group">
 				                                            <label class="control-label" for="id_departamento">Departamento</label>
@@ -300,7 +300,7 @@ a.article:hover {
 				                                        </div>
 														<div class="form-group">
 															<div class="col-lg-12" style="text-align: center;">
-																<button type="submit" class="btn btn-primary">Guardar</button>
+																<button type="submit" class="btn btn-success">Guardar</button>
 															</div>
 														</div>
 													</div>
@@ -416,11 +416,11 @@ function ListarCifras(){
 				','+"'"+item.fallecidos+"'"+','+"'"+item.recuperados+"'"+','+"'"+item.departamento.idDepartamento+"'"+
 				')">Editar</button>';
 			   filaTabla+="<tr><td>"+item.fecha+"</td>"+
-					  						  "<td>"+item.nuevos+"</td>"+
-					  						  "<td>"+item.totales+"</td>"+
-					  						  "<td>"+item.fallecidos+"</td>"+
-					  						  "<td>"+item.recuperados+"</td>"+
-					  						  "<td>"+item.departamento.descripcion+"</td>"+
+					  						  "<td>"+item.nuevos.toString() +"</td>"+
+					  						  "<td>"+item.totales.toString() +"</td>"+
+					  						  "<td>"+item.fallecidos.toString() +"</td>"+
+					  						  "<td>"+item.recuperados.toString() +"</td>"+
+					  						  "<td>"+item.departamento.descripcion.toString() +"</td>"+
 			  								  "<td>"+editar+"</td></tr>";		
 				})
 			$("#id_table_cifras tbody").append(filaTabla);
@@ -459,6 +459,10 @@ $(document).ready(function() {
                     validators:{
                         notEmpty: {
                              message: 'Ingrese el número de casos nuevos'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingrese un número valido'
                         }
                     }
                 },
@@ -467,6 +471,10 @@ $(document).ready(function() {
                     validators:{
                         notEmpty: {
                              message: 'Ingrese el total de contagiados'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingrese un número valido'
                         }
                     }
                 },
@@ -475,6 +483,10 @@ $(document).ready(function() {
                     validators:{
                         notEmpty: {
                              message: 'Ingrese el número de fallecidos'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingrese un número valido'
                         }
                     }
                 },
@@ -484,6 +496,10 @@ $(document).ready(function() {
                     validators:{
                         notEmpty: {
                              message: 'Ingrese el número de recuperados'
+                        },
+                        regexp: {
+                            regexp: /^[0-9]+$/,
+                            message: 'Ingrese un número valido'
                         }
                     }
                 },
@@ -526,6 +542,10 @@ $(document).ready(function() {
                 validators:{
                     notEmpty: {
                          message: 'Ingrese el número de casos nuevos'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Ingrese un número valido'
                     }
                 }
             },
@@ -534,6 +554,10 @@ $(document).ready(function() {
                 validators:{
                     notEmpty: {
                          message: 'Ingrese el total de contagiados'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Ingrese un número valido'
                     }
                 }
             },
@@ -542,6 +566,10 @@ $(document).ready(function() {
                 validators:{
                     notEmpty: {
                          message: 'Ingrese el número de fallecidos'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Ingrese un número valido'
                     }
                 }
             },
@@ -551,6 +579,10 @@ $(document).ready(function() {
                 validators:{
                     notEmpty: {
                          message: 'Ingrese el número de recuperados'
+                    },
+                    regexp: {
+                        regexp: /^[0-9]+$/,
+                        message: 'Ingrese un número valido'
                     }
                 }
             },

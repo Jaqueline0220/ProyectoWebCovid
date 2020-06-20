@@ -17,16 +17,10 @@
                         <li>
                             <a href="/verSintomas"><i class="fas fa-user-check"></i>Consultar Sintomas</a>
                         </li>
-                        <li>
-                            <a href="#"><i class="fas fa-user-edit"></i>Actualizar Datos</a>
-                        </li>
                     </ul>
                 </li>
                 <li>
                     <a href="/verCifras"><i class="fas fa-chart-bar"></i>Cifras</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
                 </li>
             </ul>
         </nav>
